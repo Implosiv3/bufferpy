@@ -3,4 +3,5 @@
 [ ] - Use a better date for the 'dueAt' (it's sh*tty now)
 [ ] - Make 'do_share_to_feed' a hardcoded value when the web app is not showing it (I have a TODO comment on them) but its needed
 [ ] - What happens if 'do_share_to_feed' is False when creating a Story, for example, I think nothing happens (?)
+[ ] - Determine how to handle the paid fields like 'first_comment'
 [ ] - LOT of things to improve... Just making it work for me by now (post things) :P

@@ -1,10 +1,4 @@
-from bufferpy.enums import PostType
-
-
+"""
+_This platform doesn't have a type..._
+"""
 PLATFORM = 'tiktok'
-TIKTOK_TYPES_ALLOWED = [
-    PostType.REEL
-]
-"""
-The list of types the Tiktok platform allows.
-"""

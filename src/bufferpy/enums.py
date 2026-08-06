@@ -53,7 +53,7 @@ class PostType(
     GraphQLEnum
 ):
     """
-    TODO: Explain it.
+    The type of post you want to publish.
     
     Obtained from here:
     - https://developers.buffer.com/types/PostType.html

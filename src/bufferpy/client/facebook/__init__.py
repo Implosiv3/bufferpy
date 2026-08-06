@@ -1,7 +1,3 @@
-
-
-
-
 from bufferpy.client.utils import build_datetime
 from bufferpy.enums import SchedulingType, ShareMode
 from bufferpy.inputs import CreatePostInput
@@ -142,9 +138,6 @@ class _Facebook:
         hour: int,
         minute: int,
         # specific fields
-        # TODO: This doesn't appear in the web app
-        # do_share_to_feed: bool = True,
-        # is_ai_generated: bool = False,
         # TODO: Paid plan required
         # first_comment: str = '',
     ):
@@ -159,9 +152,6 @@ class _Facebook:
 
         # Metadata
         metadata = FacebookStoryMedatadaInput(
-            # TODO: This doesn't appear in the web app
-            # do_share_to_feed = do_share_to_feed,
-            # is_ai_generated = is_ai_generated,
             # TODO: Paid plan required
             # first_comment = first_comment,
         )

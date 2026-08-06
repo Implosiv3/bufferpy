@@ -85,8 +85,6 @@ class _Tiktok:
         day: int,
         hour: int,
         minute: int,
-        # specific fields
-        # is_ai_generated: bool = False,
     ):
         """
         Schedule a Tiktok reel notification to be
@@ -99,9 +97,7 @@ class _Tiktok:
         publish_at = build_datetime(year, month, day, hour, minute)
 
         # Metadata
-        metadata = TiktokReelReminderMetadataInput(
-            # is_ai_generated = is_ai_generated,
-        )
+        metadata = TiktokReelReminderMetadataInput()
 
         input_data = CreatePostInput(
             channel_id = channel_id,

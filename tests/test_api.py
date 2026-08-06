@@ -14,11 +14,11 @@ def test_get_organizations_and_channels():
 
     client = BufferClient(API_KEY)
 
-    organizations = client.organizations()
+    organizations = client.get_organizations()
 
     assert organizations is not None
 
-    channels = client.channels(
+    channels = client.get_channels(
         organization_id = organizations[0].id
     )
 

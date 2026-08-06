@@ -17,7 +17,6 @@ from dataclasses import dataclass, field
 from typing import ClassVar
 
 
-
 @dataclass(slots = True)
 class InstagramReelMetadataInput(
     _PlatformMetadataInput

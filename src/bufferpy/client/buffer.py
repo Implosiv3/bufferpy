@@ -1,17 +1,9 @@
-"""
-TODO: The stickers will not be published,
-they are just for the reminders that will
-show a notification on your phone to go to
-the app and copy the content to publish it
-easier.
-"""
 from bufferpy.client.instagram import _Instagram
 from bufferpy.client.facebook import _Facebook
 from bufferpy.client.tiktok import _Tiktok
-from bufferpy.exceptions import BufferException, ValidationError
+from bufferpy.exceptions import ValidationError
 from bufferpy.graphql import GraphQLClient
 from bufferpy.models import Channel, Organization, Post, Account
-# TODO: This below will be removed soon
 from bufferpy.inputs import CreatePostInput, FacebookPostMedatadaInput, TiktokPostMedatadaInput
 from bufferpy.inputs.assets import VideoAssetInput
 from bufferpy.enums import PostType, ShareMode, SchedulingType
@@ -127,7 +119,7 @@ class BufferClient:
         """
         *For internal use only*
 
-        Common method to receive a creating post
+        Common method to receive a 'create_post'
         query that will be unwrapped and sent to
         the API to create it, returning the
         `Post` instance that has been created.
@@ -147,152 +139,13 @@ class BufferClient:
         )
 
 
-
-
-    # TODO: Refactor with the other ones
-    def create_scheduled_facebook_reel(
-        self,
-        channel_id: str,
-        video_url: str,
-        text: str,
-        title: str,
-        # date below
-        year: int,
-        month: int,
-        day: int,
-        hour: int,
-        minute: int,
-        # publish_at: Union[datetime, None] = None,
-    ) -> Post:
-        """
-        The date is UTC +00.00, MY is +08.00
-        """
-        scheduling_type = SchedulingType.AUTOMATIC
-        # mode = (
-        #     ShareMode.CUSTOM_SCHEDULED
-        #     if publish_at is not None
-        #     else ShareMode.SHARE_NOW
-        # )
-        # TODO: Make it work also for 'Publish now'
-        mode = ShareMode.CUSTOM_SCHEDULED
-
-        publish_at = datetime(
-            year,
-            month,
-            day,
-            hour,
-            minute,
-            tzinfo = timezone.utc,
-        )
-
-        metadata = FacebookPostMedatadaInput(
-            type = PostType.REEL,
-            # TODO: 'title' is not accepted
-            # title = title,
-        )
-
-        input_data = CreatePostInput(
-            channel_id = channel_id,
-            text = text,
-            mode = mode,
-            metadata = metadata,
-            scheduling_type = scheduling_type,
-            due_at = publish_at,
-            assets = [
-                VideoAssetInput(
-                    url = video_url,
-                )
-            ],
-        )
-
-        query = create_post_mutation(
-            input_data,
-        )
-
-        data = self._graphql.execute(query)
-
-        result = self._unwrap_mutation(
-            data['createPost'],
-        )
-
-        return self._build_post(
-            result['post'],
-        )
-
-    # TODO: Refactor with the other ones
-    def create_scheduled_tiktok_post(
-        self,
-        channel_id: str,
-        video_url: str,
-        text: str,
-        # TODO: 'title' is only valid if images, not video
-        # title: str,
-        # date below
-        is_ai_generated: bool,
-        year: int,
-        month: int,
-        day: int,
-        hour: int,
-        minute: int,
-        # publish_at: Union[datetime, None] = None,
-    ) -> Post:
-        """
-        The date is UTC +00.00, MY is +08.00
-        """
-        scheduling_type = SchedulingType.AUTOMATIC
-        # mode = (
-        #     ShareMode.CUSTOM_SCHEDULED
-        #     if publish_at is not None
-        #     else ShareMode.SHARE_NOW
-        # )
-        # TODO: Make it work also for 'Publish now'
-        mode = ShareMode.CUSTOM_SCHEDULED
-
-        publish_at = datetime(
-            year,
-            month,
-            day,
-            hour,
-            minute,
-            tzinfo = timezone.utc,
-        )
-
-        metadata = TiktokPostMedatadaInput(
-            is_ai_generated = is_ai_generated
-        )
-
-        input_data = CreatePostInput(
-            channel_id = channel_id,
-            text = text,
-            mode = mode,
-            metadata = metadata,
-            scheduling_type = scheduling_type,
-            due_at = publish_at,
-            assets = [
-                VideoAssetInput(
-                    url = video_url,
-                )
-            ],
-        )
-
-        query = create_post_mutation(
-            input_data,
-        )
-
-        data = self._graphql.execute(query)
-
-        result = self._unwrap_mutation(
-            data['createPost'],
-        )
-
-        return self._build_post(
-            result['post'],
-        )
-
     def _unwrap_mutation(
         self,
         result: dict[str, Any],
     ) -> dict[str, Any]:
+        """
+        *For internal use only*
+        """
         typename = result['__typename']
 
         if typename.endswith('Error'):
@@ -302,10 +155,17 @@ class BufferClient:
 
         return result
 
+
     def _build_post(
         self,
         data: dict[str, Any]
     ) -> Post:
+        """
+        *For internal use only*
+
+        Build the `Post` instance with the `data`
+        given.
+        """
         return Post(
             id = data['id'],
             channel_id = data['channel']['id'],
@@ -318,11 +178,6 @@ class BufferClient:
                 if data.get('dueAt')
                 else None
             ),
-            # publish_at = (
-            #     datetime.fromisoformat(data["dueAt"])
-            #     if data.get("dueAt")
-            #     else None
-            # ),
         )
 
 

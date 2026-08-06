@@ -27,11 +27,12 @@ class InstagramReelReminderMetadataInput(
     platform: ClassVar[str] = PLATFORM
     type: PostType = field(default = PostType.REEL, init = False)
 
-    # TODO: This doesn't appear in the web app
     do_share_to_feed: bool = True
     """
     Boolean flag to indicate if the post has to
     be shared to the feed or not.
+
+    _It doesn't appear in the web app..._
     """
     # TODO: Paid plan required
     # first_comment: str = ''
@@ -69,11 +70,12 @@ class InstagramPostReminderMetadataInput(
     platform: ClassVar[str] = PLATFORM
     type: PostType = field(default = PostType.POST, init = False)
 
-    # TODO: This doesn't appear in the web app
     do_share_to_feed: bool = True
     """
     Boolean flag to indicate if the post has to
     be shared to the feed or not.
+
+    _It doesn't appear in the web app..._
     """
     # TODO: Paid plan required
     # first_comment: str = ''
@@ -110,20 +112,19 @@ class InstagramStoryReminderMetadataInput(
     platform: ClassVar[str] = PLATFORM
     type: PostType = field(default = PostType.STORY, init = False)
 
-    # TODO: This doesn't appear in the web app
     do_share_to_feed: bool = True
     """
     Boolean flag to indicate if the post has to
     be shared to the feed or not.
+
+    _It doesn't appear in the web app..._
     """
     link: str = ''
     """
     A link that we want to display in the story.
 
-    TODO: How is the format (?)
-
-    TODO: I've found it in a request in the web
-    app, I thought it was a sticker...
+    _This value is weird, looks like a sticker
+    but its not a sticker in the data..._
     """
     sticker_fields: InstagramStoryStickerFieldsInput = field(
         default_factory = InstagramStoryStickerFieldsInput

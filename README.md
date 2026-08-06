@@ -83,4 +83,4 @@ The Buffer platform doesn't make a copy of the resources in their servers (by no
 That __link__ has to be __public and accessible at the time__ the post will be actually published. If the link is down, the scheduled post will fail.
 
 # Testing
-You can test the functionality through our `test/test_api.py` file, including the environments you need in the `.env` file to test it directly with your real data from Buffer. See the `.env.example` to know what to include.
+You can test the functionality through our different test files. Add the environment variables you need in the `.env` file to test it directly with your real data from Buffer. See the `.env.example` to know what to include.

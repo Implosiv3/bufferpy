@@ -91,8 +91,6 @@ class _Instagram:
         hour: int,
         minute: int,
         # specific fields
-        # TODO: This doesn't appear in the web app
-        do_share_to_feed: bool = True,
         # TODO: Paid plan required
         # first_comment: str = '',
         music: str = '',
@@ -112,7 +110,8 @@ class _Instagram:
 
         # Metadata
         metadata = InstagramReelReminderMetadataInput(
-            do_share_to_feed = do_share_to_feed,
+            # This field is useless here but required...
+            do_share_to_feed = True,
             # TODO: Paid plan required
             # first_comment = first_comment,
             sticker_fields = InstagramReelStickerFieldsInput(
@@ -153,8 +152,6 @@ class _Instagram:
         hour: int,
         minute: int,
         # specific fields
-        # TODO: This doesn't appear in the web app
-        do_share_to_feed: bool = True,
         is_ai_generated: bool = False,
         # TODO: Paid plan required
         # first_comment: str = '',
@@ -170,8 +167,8 @@ class _Instagram:
 
         # Metadata
         metadata = InstagramPostMetadataInput(
-            # TODO: This doesn't appear in the web app
-            do_share_to_feed = do_share_to_feed,
+            # This field is useless here but required...
+            do_share_to_feed = True,    
             is_ai_generated = is_ai_generated,
             # TODO: Paid plan required
             # first_comment = first_comment,
@@ -208,8 +205,6 @@ class _Instagram:
         hour: int,
         minute: int,
         # specific fields
-        # TODO: This doesn't appear in the web app
-        do_share_to_feed: bool = True,
         # TODO: Paid plan required
         # first_comment: str = '',
         music: str = '',
@@ -229,8 +224,8 @@ class _Instagram:
 
         # Metadata
         metadata = InstagramPostReminderMetadataInput(
-            # TODO: This doesn't appear in the web app
-            do_share_to_feed = do_share_to_feed,
+            # This field is useless here but required...
+            do_share_to_feed = True,    
             # TODO: Paid plan required
             # first_comment = first_comment,
             sticker_fields = InstagramPostStickerFieldsInput(
@@ -273,8 +268,6 @@ class _Instagram:
         hour: int,
         minute: int,
         # specific fields
-        # TODO: This doesn't appear in the web app
-        do_share_to_feed: bool = True,
         is_ai_generated: bool = False,
         # TODO: Paid plan required
         # first_comment: str = '',
@@ -290,8 +283,8 @@ class _Instagram:
 
         # Metadata
         metadata = InstagramStoryMetadataInput(
-            # TODO: This doesn't appear in the web app
-            do_share_to_feed = do_share_to_feed,
+            # This field is useless here but required...
+            do_share_to_feed = True,
             is_ai_generated = is_ai_generated,
             # TODO: Paid plan required
             # first_comment = first_comment,
@@ -329,8 +322,6 @@ class _Instagram:
         hour: int,
         minute: int,
         # specific fields
-        # TODO: This doesn't appear in the web app
-        do_share_to_feed: bool = True,
         # TODO: Paid plan required
         # first_comment: str = '',
         music: str = '',
@@ -350,8 +341,8 @@ class _Instagram:
 
         # Metadata
         metadata = InstagramStoryReminderMetadataInput(
-            # TODO: This doesn't appear in the web app
-            do_share_to_feed = do_share_to_feed,
+            # This field is useless here but required...
+            do_share_to_feed = True,  
             link = link,
             # TODO: Paid plan required
             # first_comment = first_comment,

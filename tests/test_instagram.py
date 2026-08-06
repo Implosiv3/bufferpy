@@ -59,7 +59,6 @@ def test_schedule_instagram_reel_notification():
         minute = DATE[4],
         # TODO: Paid plan required
         # first_comment = 'Hola, testing',
-        do_share_to_feed = False,
         music = 'Music ok',
         display_text = 'Something to be displayed',
         topics = 'topics, how',
@@ -128,7 +127,6 @@ def test_schedule_instagram_post_notification():
         minute = DATE[4],
         # TODO: Paid plan required
         # first_comment = 'Hola, testing',
-        do_share_to_feed = False,
         music = 'Music ok',
         # display_text = 'Something to be displayed',
         # topics = 'topics, how',
@@ -164,8 +162,6 @@ def test_schedule_instagram_story_post():
         hour = DATE[3],
         minute = DATE[4],
         # metadata
-        # TODO: What if False here (?)
-        do_share_to_feed = True,
         is_ai_generated = True,
         # TODO: Paid plan required
         # first_comment = 'Hola, testing',
@@ -200,8 +196,6 @@ def test_schedule_instagram_story_notification():
         minute = DATE[4],
         # TODO: Paid plan required
         # first_comment = 'Hola, testing',
-        # TODO: This doesn't appear in the web app
-        do_share_to_feed = True,
         music = 'Music ok',
         link = 'Link ok',
         display_text = 'Something to be displayed',

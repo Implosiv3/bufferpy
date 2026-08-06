@@ -99,7 +99,6 @@ class InstagramStoryStickerFieldsInput(
 
     These stickers include these fields:
     - `music`
-    # - `link`
     - `display_text`
     - `other`
     """
@@ -112,12 +111,6 @@ class InstagramStoryStickerFieldsInput(
     """
     The music text we want to display.
     """
-    # link: str = ''
-    # """
-    # A link that we want to display in the story.
-
-    # TODO: How is the format (?)
-    # """
     display_text: str = ''
     """
     The text that will be displayed over the 
