@@ -1,0 +1,9 @@
+build/*
+dist/*
+bufferpy.egg-info/*
+__pycache__
+*.bat
+settings.json
+settings.json
+.env*
+!.env.example
