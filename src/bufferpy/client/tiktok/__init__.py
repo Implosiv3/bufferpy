@@ -1,9 +1,10 @@
-from bufferpy.client.utils import build_datetime
 from bufferpy.inputs import CreatePostInput
 from bufferpy.inputs.assets import VideoAssetInput
 from bufferpy.enums import ShareMode, SchedulingType
+from bufferpy.inputs.dataclasses import PublicationDate
 from bufferpy.inputs.platforms.tiktok.posts import TiktokReelMetadataInput
 from bufferpy.inputs.platforms.tiktok.reminders import TiktokReelReminderMetadataInput
+from typing import Union
 
 
 class _Tiktok:
@@ -33,23 +34,27 @@ class _Tiktok:
         channel_id: str,
         video_url: str,
         text: str,
-        # date below
-        year: int,
-        month: int,
-        day: int,
-        hour: int,
-        minute: int,
+        publish_at: Union[PublicationDate, None],
         # specific fields
         is_ai_generated: bool = False,
     ):
         """
         Schedule a Tiktok reel to be published
-        automatically.
+        automatically at the `publish_at` date
+        provided, or inmediately if `None`.
         """
         # Scheduled post must be like this
         scheduling_type = SchedulingType.AUTOMATIC
-        mode = ShareMode.CUSTOM_SCHEDULED
-        publish_at = build_datetime(year, month, day, hour, minute)
+        mode = (
+            ShareMode.CUSTOM_SCHEDULED
+            if publish_at is not None else
+            ShareMode.SHARE_NOW
+        )
+        due_at = (
+            publish_at.as_iso8601
+            if publish_at is not None else
+            None
+        )
 
         # Metadata
         metadata = TiktokReelMetadataInput(
@@ -62,7 +67,7 @@ class _Tiktok:
             mode = mode,
             metadata = metadata,
             scheduling_type = scheduling_type,
-            due_at = publish_at,
+            due_at = due_at,
             assets = [
                 VideoAssetInput(
                     url = video_url,
@@ -79,22 +84,25 @@ class _Tiktok:
         channel_id: str,
         video_url: str,
         text: str,
-        # date below
-        year: int,
-        month: int,
-        day: int,
-        hour: int,
-        minute: int,
+        publish_at: Union[PublicationDate, None]
     ):
         """
         Schedule a Tiktok reel notification to be
-        sent to your phone at the time you say as a
-        reminder.
+        sent to your phone at the `publish_at` date
+        provided, or inmediately if `None`.
         """
         # Scheduled reminder notification must be like this
         scheduling_type = SchedulingType.NOTIFICATION
-        mode = ShareMode.CUSTOM_SCHEDULED
-        publish_at = build_datetime(year, month, day, hour, minute)
+        mode = (
+            ShareMode.CUSTOM_SCHEDULED
+            if publish_at is not None else
+            ShareMode.SHARE_NOW
+        )
+        due_at = (
+            publish_at.as_iso8601
+            if publish_at is not None else
+            None
+        )
 
         # Metadata
         metadata = TiktokReelReminderMetadataInput()
@@ -105,7 +113,7 @@ class _Tiktok:
             mode = mode,
             metadata = metadata,
             scheduling_type = scheduling_type,
-            due_at = publish_at,
+            due_at = due_at,
             assets = [
                 VideoAssetInput(
                     url = video_url,

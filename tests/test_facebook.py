@@ -14,16 +14,25 @@ def test_schedule_facebook_reel_post():
 
     client = BufferClient(API_KEY)
 
+    # Post scheduled
     post = client.facebook.schedule_reel_post(
         channel_id = FACEBOOK_CHANNEL_ID,
         video_url = VIDEO_ASSET_DIRECT_LINK,
-        text = 'Automated post from buffer-api python library V2 🚀',
-        # date
-        year = DATE[0],
-        month = DATE[1],
-        day = DATE[2],
-        hour = DATE[3],
-        minute = DATE[4],
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = DATE
+        # metadata
+        # TODO: Paid plan required
+        # first_comment = 'Hola, testing',
+    )
+
+    print(post)
+
+    # Post now
+    post = client.facebook.schedule_reel_post(
+        channel_id = FACEBOOK_CHANNEL_ID,
+        video_url = VIDEO_ASSET_DIRECT_LINK,
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = None
         # metadata
         # TODO: Paid plan required
         # first_comment = 'Hola, testing',
@@ -46,16 +55,25 @@ def test_schedule_facebook_post_post():
 
     client = BufferClient(API_KEY)
 
+    # Post scheduled
     post = client.facebook.schedule_post_post(
         channel_id = FACEBOOK_CHANNEL_ID,
         image_url = IMAGE_ASSET_DIRECT_LINK,
-        text = 'Automated post from buffer-api python library V2 🚀',
-        # date
-        year = DATE[0],
-        month = DATE[1],
-        day = DATE[2],
-        hour = DATE[3],
-        minute = DATE[4],
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = DATE
+        # metadata
+        # TODO: Paid plan required
+        # first_comment = 'Hola, testing',
+    )
+
+    print(post)
+
+    # Post now
+    post = client.facebook.schedule_post_post(
+        channel_id = FACEBOOK_CHANNEL_ID,
+        image_url = IMAGE_ASSET_DIRECT_LINK,
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = None
         # metadata
         # TODO: Paid plan required
         # first_comment = 'Hola, testing',
@@ -78,16 +96,25 @@ def test_schedule_facebook_story_post():
 
     client = BufferClient(API_KEY)
 
+    # Post scheduled
     post = client.facebook.schedule_story_post(
         channel_id = FACEBOOK_CHANNEL_ID,
         image_url = IMAGE_ASSET_DIRECT_LINK,
-        text = 'Automated post from buffer-api python library V2 🚀',
-        # date
-        year = DATE[0],
-        month = DATE[1],
-        day = DATE[2],
-        hour = DATE[3],
-        minute = DATE[4],
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = DATE
+        # metadata
+        # TODO: Paid plan required
+        # first_comment = 'Hola, testing',
+    )
+
+    print(post)
+
+    # Post now
+    post = client.facebook.schedule_story_post(
+        channel_id = FACEBOOK_CHANNEL_ID,
+        image_url = IMAGE_ASSET_DIRECT_LINK,
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = None
         # metadata
         # TODO: Paid plan required
         # first_comment = 'Hola, testing',

@@ -1,10 +1,11 @@
+from bufferpy.inputs.dataclasses import PublicationDate
 from bufferpy.inputs.platforms.instagram.posts import InstagramReelMetadataInput, InstagramPostMetadataInput, InstagramStoryMetadataInput
-from bufferpy.client.utils import build_datetime
 from bufferpy.inputs.platforms.instagram.reminders import InstagramPostReminderMetadataInput, InstagramReelReminderMetadataInput, InstagramStoryReminderMetadataInput
 from bufferpy.inputs.platforms.instagram.reminders.stickers import InstagramPostStickerFieldsInput, InstagramReelStickerFieldsInput, InstagramStoryStickerFieldsInput
 from bufferpy.inputs import CreatePostInput
 from bufferpy.inputs.assets import ImageAssetInput, VideoAssetInput
 from bufferpy.enums import ShareMode, SchedulingType
+from typing import Union
 
 
 class _Instagram:
@@ -33,12 +34,7 @@ class _Instagram:
         channel_id: str,
         video_url: str,
         text: str,
-        # date below
-        year: int,
-        month: int,
-        day: int,
-        hour: int,
-        minute: int,
+        publish_at: Union[PublicationDate, None],
         # specific fields
         do_share_to_feed: bool = True,
         is_ai_generated: bool = False,
@@ -47,12 +43,21 @@ class _Instagram:
     ):
         """
         Schedule an instagram reel to be published
-        automatically.
+        automatically at the `publish_at` date
+        provided, or inmediately if `None`.
         """
         # Scheduled post must be like this
         scheduling_type = SchedulingType.AUTOMATIC
-        mode = ShareMode.CUSTOM_SCHEDULED
-        publish_at = build_datetime(year, month, day, hour, minute)
+        mode = (
+            ShareMode.CUSTOM_SCHEDULED
+            if publish_at is not None else
+            ShareMode.SHARE_NOW
+        )
+        due_at = (
+            publish_at.as_iso8601
+            if publish_at is not None else
+            None
+        )
 
         # Metadata
         metadata = InstagramReelMetadataInput(
@@ -68,7 +73,7 @@ class _Instagram:
             mode = mode,
             metadata = metadata,
             scheduling_type = scheduling_type,
-            due_at = publish_at,
+            due_at = due_at,
             assets = [
                 VideoAssetInput(
                     url = video_url,
@@ -84,12 +89,7 @@ class _Instagram:
         channel_id: str,
         video_url: str,
         text: str,
-        # date below
-        year: int,
-        month: int,
-        day: int,
-        hour: int,
-        minute: int,
+        publish_at: Union[PublicationDate, None],
         # specific fields
         # TODO: Paid plan required
         # first_comment: str = '',
@@ -100,13 +100,21 @@ class _Instagram:
     ):
         """
         Schedule an instagram reel notification to be
-        sent to your phone at the time you say as a
-        reminder.
+        sent to your phone at the `publish_at` date
+        provided, or inmediately if `None`.
         """
         # Scheduled reminder notification must be like this
         scheduling_type = SchedulingType.NOTIFICATION
-        mode = ShareMode.CUSTOM_SCHEDULED
-        publish_at = build_datetime(year, month, day, hour, minute)
+        mode = (
+            ShareMode.CUSTOM_SCHEDULED
+            if publish_at is not None else
+            ShareMode.SHARE_NOW
+        )
+        due_at = (
+            publish_at.as_iso8601
+            if publish_at is not None else
+            None
+        )
 
         # Metadata
         metadata = InstagramReelReminderMetadataInput(
@@ -128,7 +136,7 @@ class _Instagram:
             mode = mode,
             metadata = metadata,
             scheduling_type = scheduling_type,
-            due_at = publish_at,
+            due_at = due_at,
             assets = [
                 VideoAssetInput(
                     url = video_url,
@@ -145,12 +153,7 @@ class _Instagram:
         # TODO: It could be more than 1 url
         image_url: str,
         text: str,
-        # date below
-        year: int,
-        month: int,
-        day: int,
-        hour: int,
-        minute: int,
+        publish_at: Union[PublicationDate, None],
         # specific fields
         is_ai_generated: bool = False,
         # TODO: Paid plan required
@@ -158,12 +161,21 @@ class _Instagram:
     ):
         """
         Schedule an instagram post to be published
-        automatically.
+        automatically at the `publish_at` date
+        provided, or inmediately if `None`.
         """
         # Scheduled post must be like this
         scheduling_type = SchedulingType.AUTOMATIC
-        mode = ShareMode.CUSTOM_SCHEDULED
-        publish_at = build_datetime(year, month, day, hour, minute)
+        mode = (
+            ShareMode.CUSTOM_SCHEDULED
+            if publish_at is not None else
+            ShareMode.SHARE_NOW
+        )
+        due_at = (
+            publish_at.as_iso8601
+            if publish_at is not None else
+            None
+        )
 
         # Metadata
         metadata = InstagramPostMetadataInput(
@@ -180,7 +192,7 @@ class _Instagram:
             mode = mode,
             metadata = metadata,
             scheduling_type = scheduling_type,
-            due_at = publish_at,
+            due_at = due_at,
             # TODO: It should be more than 1 asset
             assets = [
                 ImageAssetInput(
@@ -198,12 +210,7 @@ class _Instagram:
         # TODO: It should be more than 1 asset
         image_url: str,
         text: str,
-        # date below
-        year: int,
-        month: int,
-        day: int,
-        hour: int,
-        minute: int,
+        publish_at: Union[PublicationDate, None],
         # specific fields
         # TODO: Paid plan required
         # first_comment: str = '',
@@ -214,13 +221,21 @@ class _Instagram:
     ):
         """
         Schedule an instagram post notification to be
-        sent to your phone at the time you say as a
-        reminder.
+        sent to your phone at the `publish_at` date
+        provided, or inmediately if `None`.
         """
         # Scheduled reminder notification must be like this
         scheduling_type = SchedulingType.NOTIFICATION
-        mode = ShareMode.CUSTOM_SCHEDULED
-        publish_at = build_datetime(year, month, day, hour, minute)
+        mode = (
+            ShareMode.CUSTOM_SCHEDULED
+            if publish_at is not None else
+            ShareMode.SHARE_NOW
+        )
+        due_at = (
+            publish_at.as_iso8601
+            if publish_at is not None else
+            None
+        )
 
         # Metadata
         metadata = InstagramPostReminderMetadataInput(
@@ -242,7 +257,7 @@ class _Instagram:
             mode = mode,
             metadata = metadata,
             scheduling_type = scheduling_type,
-            due_at = publish_at,
+            due_at = due_at,
             # TODO: It should be more than 1 asset
             assets = [
                 ImageAssetInput(
@@ -261,12 +276,7 @@ class _Instagram:
         # TODO: It could be more than 1 url
         image_url: str,
         text: str,
-        # date below
-        year: int,
-        month: int,
-        day: int,
-        hour: int,
-        minute: int,
+        publish_at: Union[PublicationDate, None],
         # specific fields
         is_ai_generated: bool = False,
         # TODO: Paid plan required
@@ -274,12 +284,21 @@ class _Instagram:
     ):
         """
         Schedule an instagram post to be published
-        automatically.
+        automatically at the `publish_at` date
+        provided, or inmediately if `None`.
         """
         # Scheduled post must be like this
         scheduling_type = SchedulingType.AUTOMATIC
-        mode = ShareMode.CUSTOM_SCHEDULED
-        publish_at = build_datetime(year, month, day, hour, minute)
+        mode = (
+            ShareMode.CUSTOM_SCHEDULED
+            if publish_at is not None else
+            ShareMode.SHARE_NOW
+        )
+        due_at = (
+            publish_at.as_iso8601
+            if publish_at is not None else
+            None
+        )
 
         # Metadata
         metadata = InstagramStoryMetadataInput(
@@ -296,7 +315,7 @@ class _Instagram:
             mode = mode,
             metadata = metadata,
             scheduling_type = scheduling_type,
-            due_at = publish_at,
+            due_at = due_at,
             # TODO: It should be more than 1 asset
             assets = [
                 ImageAssetInput(
@@ -315,12 +334,7 @@ class _Instagram:
         # TODO: It should be more than 1 asset
         image_url: str,
         text: str,
-        # date below
-        year: int,
-        month: int,
-        day: int,
-        hour: int,
-        minute: int,
+        publish_at: Union[PublicationDate, None],
         # specific fields
         # TODO: Paid plan required
         # first_comment: str = '',
@@ -331,13 +345,21 @@ class _Instagram:
     ):
         """
         Schedule an instagram post notification to be
-        sent to your phone at the time you say as a
-        reminder.
+        sent to your phone at the `publish_at` date
+        provided, or inmediately if `None`.
         """
         # Scheduled reminder notification must be like this
         scheduling_type = SchedulingType.NOTIFICATION
-        mode = ShareMode.CUSTOM_SCHEDULED
-        publish_at = build_datetime(year, month, day, hour, minute)
+        mode = (
+            ShareMode.CUSTOM_SCHEDULED
+            if publish_at is not None else
+            ShareMode.SHARE_NOW
+        )
+        due_at = (
+            publish_at.as_iso8601
+            if publish_at is not None else
+            None
+        )
 
         # Metadata
         metadata = InstagramStoryReminderMetadataInput(
@@ -360,7 +382,7 @@ class _Instagram:
             mode = mode,
             metadata = metadata,
             scheduling_type = scheduling_type,
-            due_at = publish_at,
+            due_at = due_at,
             # TODO: It should be more than 1 asset
             assets = [
                 ImageAssetInput(

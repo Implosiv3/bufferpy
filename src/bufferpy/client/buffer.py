@@ -4,11 +4,9 @@ from bufferpy.client.tiktok import _Tiktok
 from bufferpy.exceptions import ValidationError
 from bufferpy.graphql import GraphQLClient
 from bufferpy.models import Channel, Organization, Post, Account
-from bufferpy.inputs import CreatePostInput, FacebookPostMedatadaInput, TiktokPostMedatadaInput
-from bufferpy.inputs.assets import VideoAssetInput
-from bufferpy.enums import PostType, ShareMode, SchedulingType
+from bufferpy.inputs import CreatePostInput
 from bufferpy.queries import get_account_query, get_channels_query, create_post_mutation
-from datetime import datetime, timezone
+from datetime import datetime
 from typing import Any
 
 

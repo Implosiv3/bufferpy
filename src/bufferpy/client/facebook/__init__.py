@@ -1,8 +1,9 @@
-from bufferpy.client.utils import build_datetime
-from bufferpy.enums import SchedulingType, ShareMode
+from bufferpy.inputs.platforms.facebook.posts import FacebookReelMedatadaInput, FacebookPostMedatadaInput, FacebookStoryMedatadaInput
 from bufferpy.inputs import CreatePostInput
 from bufferpy.inputs.assets import ImageAssetInput, VideoAssetInput
-from bufferpy.inputs.platforms.facebook.posts import FacebookReelMedatadaInput, FacebookPostMedatadaInput, FacebookStoryMedatadaInput
+from bufferpy.inputs.dataclasses import PublicationDate
+from bufferpy.enums import SchedulingType, ShareMode
+from typing import Union
 
 
 class _Facebook:
@@ -33,23 +34,28 @@ class _Facebook:
         video_url: str,
         text: str,
         # date below
-        year: int,
-        month: int,
-        day: int,
-        hour: int,
-        minute: int,
+        publish_at: Union[PublicationDate, None],
         # specific fields
         # TODO: Paid plan required
         # first_comment: str = '',
     ):
         """
         Schedule an instagram reel to be published
-        automatically.
+        automatically at the `publish_at` date
+        provided, or inmediately if `None`.
         """
         # Scheduled post must be like this
         scheduling_type = SchedulingType.AUTOMATIC
-        mode = ShareMode.CUSTOM_SCHEDULED
-        publish_at = build_datetime(year, month, day, hour, minute)
+        mode = (
+            ShareMode.CUSTOM_SCHEDULED
+            if publish_at is not None else
+            ShareMode.SHARE_NOW
+        )
+        due_at = (
+            publish_at.as_iso8601
+            if publish_at is not None else
+            None
+        )
 
         # Metadata
         metadata = FacebookReelMedatadaInput(
@@ -63,7 +69,7 @@ class _Facebook:
             mode = mode,
             metadata = metadata,
             scheduling_type = scheduling_type,
-            due_at = publish_at,
+            due_at = due_at,
             assets = [
                 VideoAssetInput(
                     url = video_url,
@@ -81,24 +87,28 @@ class _Facebook:
         # TODO: It could be more than 1 url
         image_url: str,
         text: str,
-        # date below
-        year: int,
-        month: int,
-        day: int,
-        hour: int,
-        minute: int,
+        publish_at: Union[PublicationDate, None],
         # specific fields
         # TODO: Paid plan required
         # first_comment: str = '',
     ):
         """
         Schedule an instagram post to be published
-        automatically.
+        automatically at the `publish_at` date
+        provided, or inmediately if `None`.
         """
         # Scheduled post must be like this
         scheduling_type = SchedulingType.AUTOMATIC
-        mode = ShareMode.CUSTOM_SCHEDULED
-        publish_at = build_datetime(year, month, day, hour, minute)
+        mode = (
+            ShareMode.CUSTOM_SCHEDULED
+            if publish_at is not None else
+            ShareMode.SHARE_NOW
+        )
+        due_at = (
+            publish_at.as_iso8601
+            if publish_at is not None else
+            None
+        )
 
         # Metadata
         metadata = FacebookPostMedatadaInput(
@@ -112,7 +122,7 @@ class _Facebook:
             mode = mode,
             metadata = metadata,
             scheduling_type = scheduling_type,
-            due_at = publish_at,
+            due_at = due_at,
             # TODO: It should be more than 1 asset
             assets = [
                 ImageAssetInput(
@@ -131,24 +141,28 @@ class _Facebook:
         # TODO: It could be more than 1 url
         image_url: str,
         text: str,
-        # date below
-        year: int,
-        month: int,
-        day: int,
-        hour: int,
-        minute: int,
+        publish_at: Union[PublicationDate, None],
         # specific fields
         # TODO: Paid plan required
         # first_comment: str = '',
     ):
         """
         Schedule a Facebook story to be published
-        automatically.
+        automatically at the `publish_at` date
+        provided, or inmediately if `None`.
         """
         # Scheduled post must be like this
         scheduling_type = SchedulingType.AUTOMATIC
-        mode = ShareMode.CUSTOM_SCHEDULED
-        publish_at = build_datetime(year, month, day, hour, minute)
+        mode = (
+            ShareMode.CUSTOM_SCHEDULED
+            if publish_at is not None else
+            ShareMode.SHARE_NOW
+        )
+        due_at = (
+            publish_at.as_iso8601
+            if publish_at is not None else
+            None
+        )
 
         # Metadata
         metadata = FacebookStoryMedatadaInput(
@@ -162,7 +176,7 @@ class _Facebook:
             mode = mode,
             metadata = metadata,
             scheduling_type = scheduling_type,
-            due_at = publish_at,
+            due_at = due_at,
             # TODO: It should be more than 1 asset
             assets = [
                 ImageAssetInput(

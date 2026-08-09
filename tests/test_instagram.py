@@ -14,16 +14,27 @@ def test_schedule_instagram_reel_post():
 
     client = BufferClient(API_KEY)
 
+    # Post scheduled
     post = client.instagram.schedule_reel_post(
         channel_id = INSTAGRAM_CHANNEL_ID,
         video_url = VIDEO_ASSET_DIRECT_LINK,
-        text = 'Automated post from buffer-api python library V2 🚀',
-        # date
-        year = DATE[0],
-        month = DATE[1],
-        day = DATE[2],
-        hour = DATE[3],
-        minute = DATE[4],
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = DATE,
+        # metadata
+        do_share_to_feed = True,
+        is_ai_generated = True,
+        # TODO: Paid plan required
+        # first_comment = 'Hola, testing',
+    )
+
+    print(post)
+
+    # Post now
+    post = client.instagram.schedule_reel_post(
+        channel_id = INSTAGRAM_CHANNEL_ID,
+        video_url = VIDEO_ASSET_DIRECT_LINK,
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = None,
         # metadata
         do_share_to_feed = True,
         is_ai_generated = True,
@@ -47,16 +58,28 @@ def test_schedule_instagram_reel_notification():
 
     client = BufferClient(API_KEY)
 
+    # Post scheduled
     post = client.instagram.schedule_reel_notification(
         channel_id = INSTAGRAM_CHANNEL_ID,
         video_url = VIDEO_ASSET_DIRECT_LINK,
-        text = 'Automated post from buffer-api python library V2 🚀',
-        # date
-        year = DATE[0],
-        month = DATE[1],
-        day = DATE[2],
-        hour = DATE[3],
-        minute = DATE[4],
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = DATE,
+        # TODO: Paid plan required
+        # first_comment = 'Hola, testing',
+        music = 'Music ok',
+        display_text = 'Something to be displayed',
+        topics = 'topics, how',
+        products = 'products, how'
+    )
+
+    print(post)
+
+    # Post now
+    post = client.instagram.schedule_reel_notification(
+        channel_id = INSTAGRAM_CHANNEL_ID,
+        video_url = VIDEO_ASSET_DIRECT_LINK,
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = None,
         # TODO: Paid plan required
         # first_comment = 'Hola, testing',
         music = 'Music ok',
@@ -82,16 +105,26 @@ def test_schedule_instagram_post_post():
 
     client = BufferClient(API_KEY)
 
+    # Post scheduled
     post = client.instagram.schedule_post_post(
         channel_id = INSTAGRAM_CHANNEL_ID,
         image_url = IMAGE_ASSET_DIRECT_LINK,
-        text = 'Automated post from buffer-api python library V2 🚀',
-        # date
-        year = DATE[0],
-        month = DATE[1],
-        day = DATE[2],
-        hour = DATE[3],
-        minute = DATE[4],
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = DATE,
+        # metadata
+        is_ai_generated = True,
+        # TODO: Paid plan required
+        # first_comment = 'Hola, testing',
+    )
+
+    print(post)
+
+    # Post now
+    post = client.instagram.schedule_post_post(
+        channel_id = INSTAGRAM_CHANNEL_ID,
+        image_url = IMAGE_ASSET_DIRECT_LINK,
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = None,
         # metadata
         is_ai_generated = True,
         # TODO: Paid plan required
@@ -115,16 +148,28 @@ def test_schedule_instagram_post_notification():
 
     client = BufferClient(API_KEY)
 
+    # Post scheduled
     post = client.instagram.schedule_post_notification(
         channel_id = INSTAGRAM_CHANNEL_ID,
         image_url = IMAGE_ASSET_DIRECT_LINK,
-        text = 'Automated post from buffer-api python library V2 🚀',
-        # date
-        year = DATE[0],
-        month = DATE[1],
-        day = DATE[2],
-        hour = DATE[3],
-        minute = DATE[4],
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = DATE,
+        # TODO: Paid plan required
+        # first_comment = 'Hola, testing',
+        music = 'Music ok',
+        # display_text = 'Something to be displayed',
+        # topics = 'topics, how',
+        products = 'products, how'
+    )
+
+    print(post)
+
+    # Post now
+    post = client.instagram.schedule_post_notification(
+        channel_id = INSTAGRAM_CHANNEL_ID,
+        image_url = IMAGE_ASSET_DIRECT_LINK,
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = None,
         # TODO: Paid plan required
         # first_comment = 'Hola, testing',
         music = 'Music ok',
@@ -151,16 +196,26 @@ def test_schedule_instagram_story_post():
 
     client = BufferClient(API_KEY)
 
+    # Post scheduled
     post = client.instagram.schedule_story_post(
         channel_id = INSTAGRAM_CHANNEL_ID,
         image_url = IMAGE_ASSET_DIRECT_LINK,
-        text = 'Automated post from buffer-api python library V2 🚀',
-        # date
-        year = DATE[0],
-        month = DATE[1],
-        day = DATE[2],
-        hour = DATE[3],
-        minute = DATE[4],
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = DATE,
+        # metadata
+        is_ai_generated = True,
+        # TODO: Paid plan required
+        # first_comment = 'Hola, testing',
+    )
+
+    print(post)
+
+    # Post now
+    post = client.instagram.schedule_story_post(
+        channel_id = INSTAGRAM_CHANNEL_ID,
+        image_url = IMAGE_ASSET_DIRECT_LINK,
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = None,
         # metadata
         is_ai_generated = True,
         # TODO: Paid plan required
@@ -184,16 +239,28 @@ def test_schedule_instagram_story_notification():
 
     client = BufferClient(API_KEY)
 
+    # Post scheduled
     post = client.instagram.schedule_story_notification(
         channel_id = INSTAGRAM_CHANNEL_ID,
         image_url = IMAGE_ASSET_DIRECT_LINK,
-        text = 'Automated post from buffer-api python library V2 🚀',
-        # date
-        year = DATE[0],
-        month = DATE[1],
-        day = DATE[2],
-        hour = DATE[3],
-        minute = DATE[4],
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = DATE,
+        # TODO: Paid plan required
+        # first_comment = 'Hola, testing',
+        music = 'Music ok',
+        link = 'Link ok',
+        display_text = 'Something to be displayed',
+        other = 'Other, how'
+    )
+
+    print(post)
+
+    # Post now
+    post = client.instagram.schedule_story_notification(
+        channel_id = INSTAGRAM_CHANNEL_ID,
+        image_url = IMAGE_ASSET_DIRECT_LINK,
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = None,
         # TODO: Paid plan required
         # first_comment = 'Hola, testing',
         music = 'Music ok',

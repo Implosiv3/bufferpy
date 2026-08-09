@@ -14,16 +14,24 @@ def test_schedule_tiktok_reel_post():
 
     client = BufferClient(API_KEY)
 
+    # Post scheduled
     post = client.tiktok.schedule_reel_post(
         channel_id = TIKTOK_CHANNEL_ID,
         video_url = VIDEO_ASSET_DIRECT_LINK,
-        text = 'Automated post from buffer-api python library V2 🚀',
-        # date
-        year = DATE[0],
-        month = DATE[1],
-        day = DATE[2],
-        hour = DATE[3],
-        minute = DATE[4],
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = DATE,
+        # metadata
+        is_ai_generated = True
+    )
+
+    print(post)
+
+    # Post now
+    post = client.tiktok.schedule_reel_post(
+        channel_id = TIKTOK_CHANNEL_ID,
+        video_url = VIDEO_ASSET_DIRECT_LINK,
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = None,
         # metadata
         is_ai_generated = True
     )
@@ -44,16 +52,25 @@ def test_schedule_tiktok_reel_notification():
 
     client = BufferClient(API_KEY)
 
+    # Post scheduled
     post = client.tiktok.schedule_reel_notification(
         channel_id = TIKTOK_CHANNEL_ID,
         video_url = VIDEO_ASSET_DIRECT_LINK,
-        text = 'Automated post from buffer-api python library V2 🚀',
-        # date
-        year = DATE[0],
-        month = DATE[1],
-        day = DATE[2],
-        hour = DATE[3],
-        minute = DATE[4],
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = DATE,
+        # metadata
+        # TODO: Paid plan required
+        # first_comment = 'Hola, testing',
+    )
+
+    print(post)
+
+    # Post now
+    post = client.tiktok.schedule_reel_notification(
+        channel_id = TIKTOK_CHANNEL_ID,
+        video_url = VIDEO_ASSET_DIRECT_LINK,
+        text = 'Automated post from bufferpy python library 🚀',
+        publish_at = None,
         # metadata
         # TODO: Paid plan required
         # first_comment = 'Hola, testing',
