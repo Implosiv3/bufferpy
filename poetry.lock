@@ -209,14 +209,14 @@ files = [
 
 [[package]]
 name = "env-easy"
-version = "0.0.3"
+version = "0.0.4"
 description = "Environment variables, but easy"
 optional = false
 python-versions = "<3.14,>=3.8"
 groups = ["dev"]
 files = [
-    {file = "env_easy-0.0.3-py3-none-any.whl", hash = "sha256:886836874d89b0a44f1767a50bd42cd05d7cecc5357fe8c5dfe1fe918003021b"},
-    {file = "env_easy-0.0.3.tar.gz", hash = "sha256:9caa24ef37ed6b5c877b9514a80c6f2b24cc56049727e95efd285487e6f8cdda"},
+    {file = "env_easy-0.0.4-py3-none-any.whl", hash = "sha256:d263a3d65d0d671ab3e8dad6bc962d453eaf6b8103edd78a1cb2550ad92db455"},
+    {file = "env_easy-0.0.4.tar.gz", hash = "sha256:cd833f2a79df130f78823f05dedf712387b9c2eb8233fae79c8619407d5bbffa"},
 ]
 
 [package.dependencies]
@@ -448,4 +448,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.8,<3.14"
-content-hash = "36e1a09b21290792475ca0f49541cd3bb3dab254f4855875aba05dc42cb80aea"
+content-hash = "94daa048e6c01cfdac0de2314bcb620df1af666ceb57a540a59cd7e89ab5ec88"
