@@ -6,6 +6,7 @@ from typing import Any, Union
 import json
 
 
+# TODO: What is this name (?)
 class GraphQLEnum(
     str,
     Enum

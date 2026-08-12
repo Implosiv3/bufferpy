@@ -109,3 +109,17 @@ class PostType(
     # SHORT = 'short'
     # THREAD = 'thread'
     # WHATS_NEW = 'whats_new'
+
+
+class Channel(
+    # TODO: GraphQLEnum? Why (?)
+    GraphQLEnum
+):
+    """
+    The different channels we have in the
+    Buffer platform.
+    """
+
+    INSTAGRAM = 'instagram'
+    FACEBOOK = 'facebook'
+    TIKTOK = 'tiktok'
